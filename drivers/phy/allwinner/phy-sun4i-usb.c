@@ -99,6 +99,7 @@
 #define POLL_TIME			msecs_to_jiffies(250)
 
 enum sun4i_usb_phy_type {
+	suniv_f1c100s_phy,
 	sun4i_a10_phy,
 	sun6i_a31_phy,
 	sun8i_a33_phy,
@@ -857,6 +858,14 @@ static int sun4i_usb_phy_probe(struct platform_device *pdev)
 	return 0;
 }
 
+static const struct sun4i_usb_phy_cfg suniv_f1c100s_cfg = {
+	.num_phys = 1,
+	.type = suniv_f1c100s_phy,
+	.disc_thresh = 3,
+	.phyctl_offset = REG_PHYCTL_A10,
+	.dedicated_clocks = true,
+};
+
 static const struct sun4i_usb_phy_cfg sun4i_a10_cfg = {
 	.num_phys = 3,
 	.type = sun4i_a10_phy,
@@ -970,6 +979,10 @@ static const struct sun4i_usb_phy_cfg sun50i_h6_cfg = {
 };
 
 static const struct of_device_id sun4i_usb_phy_of_match[] = {
+	{
+		.compatible = "allwinner,suniv-f1c100s-usb-phy",
+		.data = &suniv_f1c100s_cfg
+	},
 	{ .compatible = "allwinner,sun4i-a10-usb-phy", .data = &sun4i_a10_cfg },
 	{ .compatible = "allwinner,sun5i-a13-usb-phy", .data = &sun5i_a13_cfg },
 	{ .compatible = "allwinner,sun6i-a31-usb-phy", .data = &sun6i_a31_cfg },
