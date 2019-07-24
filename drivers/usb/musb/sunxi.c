@@ -724,7 +724,7 @@ static int sunxi_musb_probe(struct platform_device *pdev)
 
 	if (of_device_is_compatible(np, "allwinner,sun8i-a33-musb") ||
 	    of_device_is_compatible(np, "allwinner,sun8i-h3-musb") ||
-	    of_device_is_compatible(np, "allwinner,suniv-musb")) {
+	    of_device_is_compatible(np, "allwinner,suniv-f1c100s-musb")) {
 		set_bit(SUNXI_MUSB_FL_HAS_RESET, &glue->flags);
 		set_bit(SUNXI_MUSB_FL_NO_CONFIGDATA, &glue->flags);
 	}
