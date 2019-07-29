@@ -975,6 +975,9 @@ static int sun4i_backend_remove(struct platform_device *pdev)
 	return 0;
 }
 
+static const struct sun4i_backend_quirks suniv_backend_quirks = {
+};
+
 static const struct sun4i_backend_quirks sun4i_backend_quirks = {
 	.needs_output_muxing = true,
 };
@@ -997,6 +1000,10 @@ static const struct sun4i_backend_quirks sun9i_backend_quirks = {
 };
 
 static const struct of_device_id sun4i_backend_of_table[] = {
+	{
+		.compatible = "allwinner,suniv-f1c100s-display-backend",
+		.data = &suniv_backend_quirks,
+	},
 	{
 		.compatible = "allwinner,sun4i-a10-display-backend",
 		.data = &sun4i_backend_quirks,
