@@ -71,6 +71,32 @@
 			};
 		};
 
+		spi0: spi@1c05000 {
+			compatible = "allwinner,suniv-spi",
+				     "allwinner,sun8i-h3-spi";
+			reg = <0x01c05000 0x1000>;
+			interrupts = <10>;
+			clocks = <&ccu CLK_BUS_SPI0>, <&ccu CLK_BUS_SPI0>;
+			clock-names = "ahb", "mod";
+			resets = <&ccu RST_BUS_SPI0>;
+			status = "disabled";
+			#address-cells = <1>;
+			#size-cells = <0>;
+		};
+
+		spi1: spi@1c06000 {
+			compatible = "allwinner,suniv-spi",
+				     "allwinner,sun8i-h3-spi";
+			reg = <0x01c06000 0x1000>;
+			interrupts = <11>;
+			clocks = <&ccu CLK_BUS_SPI1>, <&ccu CLK_BUS_SPI1>;
+			clock-names = "ahb", "mod";
+			resets = <&ccu RST_BUS_SPI1>;
+			status = "disabled";
+			#address-cells = <1>;
+			#size-cells = <0>;
+		};
+
 		tcon0: lcd-controller@1c0c000 {
 			compatible = "allwinner,suniv-f1c100s-tcon";
 			reg = <0x01c0c000 0x1000>;
@@ -116,6 +142,19 @@
 			#reset-cells = <1>;
 		};
 
+		i2c0: i2c@1C27000 {
+			compatible = "allwinner,sun6i-a31-i2c";
+			reg = <0x01C27000 0x400>;
+			interrupts = <7>;
+			clocks = <&ccu CLK_BUS_I2C0>;
+			resets = <&ccu RST_BUS_I2C0>;
+			pinctrl-names = "default";
+			pinctrl-0 = <&i2c0_pins>;
+			status = "disabled";
+			#address-cells = <1>;
+			#size-cells = <0>;
+		};
+
 		intc: interrupt-controller@1c20400 {
 			compatible = "allwinner,suniv-f1c100s-ic";
 			reg = <0x01c20400 0x400>;
@@ -134,6 +173,11 @@
 			#interrupt-cells = <3>;
 			#gpio-cells = <3>;
 
+			i2c0_pins: i2c0 {
+				pins = "PE11", "PE12";
+				function = "i2c0";
+            };
+
 			uart0_pe_pins: uart0-pe-pins {
 				pins = "PE0", "PE1";
 				function = "uart0";
@@ -151,6 +195,11 @@
 			mmc0_pins: mmc0-pins {
 				pins = "PF0", "PF1", "PF2", "PF3", "PF4", "PF5";
 				function = "mmc0";
+			};
+
+			spi0_pins_a: spi0-pins-pc {
+				pins = "PC0", "PC1", "PC2", "PC3";
+				function = "spi0";
 			};
 		};
 
