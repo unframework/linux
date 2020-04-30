@@ -99,6 +99,10 @@ static const struct flash_info winbond_parts[] = {
 			     SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
 	{ "w25m512jv", INFO(0xef7119, 0, 64 * 1024, 1024,
 			    SECT_4K | SPI_NOR_QUAD_READ | SPI_NOR_DUAL_READ) },
+
+	/* XTX */
+	/* commented out by @unframework while porting florpor/linux#licheepi-nano-v5.4.140 */
+	/* { "xt25f128b", INFO(0x0b4018, 0, 64 * 1024, 256, SECT_4K) },*/
 };
 
 /**
