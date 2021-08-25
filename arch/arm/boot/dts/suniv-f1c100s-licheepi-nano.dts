@@ -122,7 +122,6 @@
 	};
 };
 
-/* commented out by @unframework, should be ifdef
 &spi0 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&spi0_pins_a>;
@@ -164,7 +163,6 @@
 		};
 	};
 };
-*/
 
 &tcon0 {
 	pinctrl-names = "default";
