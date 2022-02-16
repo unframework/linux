@@ -24,6 +24,7 @@
 	};
 
 	panel: panel {
+		// default 800x480 resolution setup
 		compatible = "lg,lb070wv8", "simple-panel";
 		#address-cells = <1>;
 		#size-cells = <0>;
@@ -93,6 +94,9 @@
 	vref-supply = <&reg_vcc3v0>;
 	status = "okay";
 
+	/*
+	// example keymap for low-resolution ADC input driver, customize this for your hardware
+	// (different voltage levels on LRADC pins correspond to different emitted keyboard codes, up to 3 volt)
 	button-200 {
 		label = "Volume Up";
 		linux,code = <KEY_VOLUMEUP>;
@@ -120,6 +124,7 @@
 		channel = <0>;
 		voltage = <800000>;
 	};
+	*/
 };
 
 &spi0 {
@@ -133,6 +138,9 @@
 		compatible = "winbond,w25q128", "jedec,spi-nor";
 		reg = <0>;
 		spi-max-frequency = <50000000>;
+
+		/*
+		// example partition table, customize this for your Flash-boot distribution
 		partitions {
 			compatible = "fixed-partitions";
 			#address-cells = <1>;
@@ -161,6 +169,7 @@
 				reg = <0x510000 0xAF0000>;
 			};
 		};
+		*/
 	};
 };
 
